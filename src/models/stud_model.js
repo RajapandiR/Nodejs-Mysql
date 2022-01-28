@@ -9,9 +9,11 @@ const stud = db.define('student', {
     mark1: { type: Sequelize.INTEGER },
     mark2: { type: Sequelize.INTEGER },
     mark3: { type: Sequelize.INTEGER },
+    image: { type: Sequelize.STRING ,
+        allowNull: true,},
 
 })
 
-stud.sync();
+stud.sync({force:false, alter: true });
 
 export default stud;

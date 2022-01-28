@@ -48,6 +48,8 @@ class StudController {
             if(!isValid){
                 return res.status(400).json(errors);
             }
+            if(req.file != undefined && (req.file.filename != undefined && req.file.filename != ''))
+                body.image = req.file.filename;
             const data = await Stud.create(body)
             const response = {
                 statusCode: 200,
@@ -69,6 +71,8 @@ class StudController {
         const { body } = req;
         const id = body.id;
         try{
+            if(req.file != undefined && (req.file.filename != undefined && req.file.filename != ''))
+                body.image = req.file.filename;
             const data = await Stud.update(body, {where: {id: id}})
             const response = {
                 statusCode: 200,
